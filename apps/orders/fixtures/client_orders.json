@@ -1,0 +1,54 @@
+[
+  {
+    "model": "orders.clientorder",
+    "pk": 1,
+    "fields": {
+      "created_at": "2023-12-04T09:11:45.120Z",
+      "updated_at": "2023-12-04T09:11:45.120Z",
+      "client": 1,
+      "driver_order": 1,
+      "lat": "727",
+      "lng": "924",
+      "is_accepted": false
+    }
+  },
+  {
+    "model": "orders.clientorder",
+    "pk": 2,
+    "fields": {
+      "created_at": "2023-12-04T09:16:42.543Z",
+      "updated_at": "2023-12-04T09:16:42.543Z",
+      "client": 2,
+      "driver_order": 1,
+      "lat": "834",
+      "lng": "140",
+      "is_accepted": false
+    }
+  },
+  {
+    "model": "orders.clientorder",
+    "pk": 3,
+    "fields": {
+      "created_at": "2023-12-04T09:17:12.771Z",
+      "updated_at": "2023-12-04T09:17:12.771Z",
+      "client": 2,
+      "driver_order": 2,
+      "lat": "729",
+      "lng": "125",
+      "is_accepted": false
+    }
+  },
+  {
+    "model": "orders.clientorder",
+    "pk": 5,
+    "fields": {
+      "created_at": "2023-12-17T08:49:43.625Z",
+      "updated_at": "2023-12-17T08:49:43.625Z",
+      "client": 3,
+      "driver_order": 1,
+      "lat": "41.2160513",
+      "lng": "69.2019578",
+      "is_accepted": false
+    }
+  }
+]

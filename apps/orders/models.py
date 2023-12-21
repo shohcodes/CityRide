@@ -32,6 +32,7 @@ class ClientOrder(TimeStampedModel):
     class Meta:
         verbose_name = 'ClientOrder'
         verbose_name_plural = 'ClientOrders'
+        unique_together = ['client', 'driver_order']
 
     def __str__(self):
         return f'Order N-{self.id}'

@@ -1,0 +1,47 @@
+[
+  {
+    "model": "orders.driverorders",
+    "pk": 1,
+    "fields": {
+      "created_at": "2023-12-04T08:56:31.133Z",
+      "updated_at": "2023-12-04T08:56:31.133Z",
+      "driver": 6,
+      "fromm": "Tashkent",
+      "to": "Termez",
+      "time": "2023-12-04T08:53:45.473Z",
+      "price": 250,
+      "seats": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "orders.driverorders",
+    "pk": 2,
+    "fields": {
+      "created_at": "2023-12-04T08:57:30.765Z",
+      "updated_at": "2023-12-04T08:57:30.766Z",
+      "driver": 7,
+      "fromm": "Navai",
+      "to": "Jizzax",
+      "time": "2023-12-04T08:53:45.473Z",
+      "price": 300,
+      "seats": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "orders.driverorders",
+    "pk": 3,
+    "fields": {
+      "created_at": "2023-12-04T08:58:23.202Z",
+      "updated_at": "2023-12-04T08:58:23.202Z",
+      "driver": 8,
+      "fromm": "Sariasiya",
+      "to": "Tashkent",
+      "time": "2023-12-04T08:53:45.473Z",
+      "price": 240,
+      "seats": 2,
+      "is_active": true
+    }
+  }
+]

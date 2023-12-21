@@ -1,0 +1,154 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:29:48.738Z",
+      "updated_at": "2023-12-04T08:29:48.738Z",
+      "full_name": "User1",
+      "phone_number": 333304710,
+      "password": "pbkdf2_sha256$600000$NKgFP5ETjbgrX8kKMLQEQ9$z4HaWt7Keh5IoYkQKu8vBO18fMQRJCijtGo5eUxs28I=",
+      "role": "client",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:39:21.250Z",
+      "updated_at": "2023-12-04T08:40:32.481Z",
+      "full_name": "User2",
+      "phone_number": 333304712,
+      "password": "pbkdf2_sha256$600000$YDzEjGgrjcGBlr8lD1Jt16$SszsrWzglnpUmhKVnkLWoZsfx6ZfuVe6+T/g6ADW590=",
+      "role": "client",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:44:54.125Z",
+      "updated_at": "2023-12-04T08:45:37.082Z",
+      "full_name": "User3",
+      "phone_number": 333304713,
+      "password": "pbkdf2_sha256$600000$QeZHnNGMLIjalWQA5o07kX$a3sidQsqXeXIuK3obhov4uN0xAeibZnFOLD2uDqPeNI=",
+      "role": "client",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "last_login": "2023-12-16T09:24:08.825Z",
+      "is_superuser": true,
+      "created_at": "2023-12-04T08:47:21.345Z",
+      "updated_at": "2023-12-04T08:47:43.387Z",
+      "full_name": "Admin1",
+      "phone_number": 333304111,
+      "password": "pbkdf2_sha256$600000$gAOB63ie7B7flvrjrE2wHv$ZAiRTA7kCjNnYHYG1mGfRRuU1qSBwWxUo6BCNrL3wpE=",
+      "role": "admin",
+      "is_staff": true,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "last_login": null,
+      "is_superuser": true,
+      "created_at": "2023-12-04T08:47:55.948Z",
+      "updated_at": "2023-12-04T08:48:10.112Z",
+      "full_name": "Admin2",
+      "phone_number": 333304112,
+      "password": "pbkdf2_sha256$600000$g7YT2QL7ImaYh86qHv4oMA$zkV05Dr8kS3V3hRSYMIHobpbDK3MtCKczGg5lnPMNGM=",
+      "role": "admin",
+      "is_staff": true,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:50:51.336Z",
+      "updated_at": "2023-12-04T08:51:20.849Z",
+      "full_name": "Driver1",
+      "phone_number": 333304211,
+      "password": "pbkdf2_sha256$600000$lr4AJwXm8xlcWqT5K1SBbM$X6I70Q7kTpKtNzCF11E/iZxOovBEv33aOOHyU1nFkPQ=",
+      "role": "driver",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:51:57.924Z",
+      "updated_at": "2023-12-04T08:52:13.312Z",
+      "full_name": "Driver2",
+      "phone_number": 333304212,
+      "password": "pbkdf2_sha256$600000$3BKNH4kjguwVb4ZXxgP3zb$71f5kP9EAPg7ABebofloAR39wvCSx7VVfuk/Rtgi8Xg=",
+      "role": "driver",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "last_login": null,
+      "is_superuser": false,
+      "created_at": "2023-12-04T08:53:01.893Z",
+      "updated_at": "2023-12-04T08:53:21.200Z",
+      "full_name": "Driver3",
+      "phone_number": 333304213,
+      "password": "pbkdf2_sha256$600000$uxA3o0wlye8RpWedIP57Og$7gfac45NdRia0M830nC525DigMj4OktHcuTpF3ymxgs=",
+      "role": "driver",
+      "is_staff": false,
+      "is_active": true,
+      "is_verified": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

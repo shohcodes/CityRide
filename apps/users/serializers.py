@@ -1,13 +1,10 @@
-from random import randint
-
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
-from rest_framework.response import Response
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from apps.drivers.models import Drivers
 from apps.users.choices import UsersRoleChoices
 from apps.users.exceptions import IncorrectActivationCodeException
-from apps.users.models import User, SMS
+from apps.users.models import User
 from apps.users.services import send_sms, check_activation_code
 from apps.users.validators import phone_validator, activation_code_validator
 
@@ -25,12 +22,26 @@ class UsersDetailSerializer(serializers.ModelSerializer):
                   'created_at', 'updated_at']
 
 
+class UsersDetailOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'full_name', 'phone_number']
+
+
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
             'full_name',
             'phone_number'
+        ]
+
+
+class UserNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'full_name',
         ]
 
 
@@ -74,3 +85,18 @@ class ConfirmResetPasswordSerializer(serializers.Serializer):
     phone_number = serializers.IntegerField(validators=[phone_validator])
     code = serializers.IntegerField(validators=[activation_code_validator], write_only=True)
     new_password = serializers.CharField(max_length=255)
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        user = self.user
+
+        if user.role == UsersRoleChoices.DRIVER:
+            if user.drivers.is_accepted and user.is_verified:
+                return data
+            raise serializers.ValidationError("You are not a verified driver.")
+        else:
+            if user.is_verified:
+                return data
+            raise serializers.ValidationError("User is not verified.")

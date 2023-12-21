@@ -1,11 +1,9 @@
-from random import randint
-
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 
 from apps.drivers.models import Drivers, CarModels
 from apps.users.choices import UsersRoleChoices
-from apps.users.models import User, SMS
+from apps.users.models import User
 from apps.users.serializers import UserListSerializer, UsersDetailSerializer
 from apps.users.services import send_sms
 
@@ -56,8 +54,30 @@ class DriverCreateSerializer(serializers.ModelSerializer):
         return instance
 
 
+class DriverUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Drivers
+        fields = ['car_number', 'car_photo']
+
+
+class CarModelsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = CarModels
+        fields = '__all__'
+
+
+class DriversSerializer(serializers.ModelSerializer):
+    car_model = serializers.CharField(source='car_model.model')
+    car_name = serializers.CharField(source='car_model.name')
+
+    class Meta:
+        model = Drivers
+        fields = ['car_model', 'car_name', 'car_number', 'car_photo']
+
+
 class DriverDetailSerializer(serializers.ModelSerializer):
     user = UsersDetailSerializer()
+    car_model = CarModelsSerializers()
 
     class Meta:
         model = Drivers
@@ -69,13 +89,15 @@ class DriverDetailSerializer(serializers.ModelSerializer):
         ]
 
 
-class DriverUpdateSerializer(serializers.ModelSerializer):
+class DriversSerializer1(serializers.ModelSerializer):
+    car_name = serializers.CharField(source='car_model.name')
+
     class Meta:
         model = Drivers
-        fields = ['car_number', 'car_photo']
+        fields = ['car_name']
 
 
-class CarModelsSerializers(serializers.ModelSerializer):
+class DriverAcceptSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CarModels
-        fields = '__all__'
+        model = Drivers
+        fields = ['is_accepted']

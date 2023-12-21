@@ -107,7 +107,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 class SMS(TimeStampedModel):
     phone_number = models.IntegerField(validators=[phone_validator])
     code = models.IntegerField(validators=[activation_code_validator])
-    expires_at = models.DateTimeField()  # default=timezone.now() + timezone.timedelta(minutes=6)
+    expires_at = models.DateTimeField()
     is_used = models.BooleanField(default=False)
 
     class Meta:
@@ -116,6 +116,11 @@ class SMS(TimeStampedModel):
 
     def __str__(self):
         return f'{self.code}'
+
+    def save(self, *args, **kwargs):
+        if not self.expires_at:
+            self.expires_at = timezone.now() + timezone.timedelta(minutes=5)
+        super().save(*args, **kwargs)
 
     @property
     def expired(self):

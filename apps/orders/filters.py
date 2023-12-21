@@ -1,10 +1,12 @@
-from django_filters import FilterSet, DateFilter, TimeFilter, DateFromToRangeFilter
+from datetime import datetime, timedelta
+
+from django_filters import rest_framework as filters
 from rest_framework.filters import BaseFilterBackend
 
 from apps.orders.models import DriverOrders
 
 
-class OrderFilter(BaseFilterBackend):
+class DriverOrderFilters(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         fromm = request.query_params.get('fromm')
         to = request.query_params.get('to')
@@ -14,23 +16,29 @@ class OrderFilter(BaseFilterBackend):
         if to:
             queryset = queryset.filter(to=to)
         if time:
-            queryset = queryset.filter(time=time)
+            time_datetime = datetime.strptime(time, "%d.%m.%Y")
+            queryset = queryset.filter(
+                time__day=time_datetime.day,
+                time__month=time_datetime.month,
+                time__year=time_datetime.year
+            )
         return queryset
 
 
-# class Order1Filter(FilterSet):
-#     # time__date = DateFilter(field_name='time', lookup_expr='date', label='Date (yyyy-mm-dd)')
-#     # time__time = TimeFilter(field_name='time', lookup_expr='time', label='Time (hh:mm)')
-#
-#     class Meta:
-#         model = DriverOrders
-#         fields = {
-#             'fromm': ['exact', 'contains'],
-#             'to': ['exact', 'contains'],
-#             # 'time__date': ['exact', 'gte', 'lte'],
-#             # 'time__time': ['exact', 'gte', 'lte'],
-#         }
-#
-#     # Define custom filters for 'time' field
-#     time__date = DateFilter(field_name='time', lookup_expr='date', label='Date (yyyy-mm-dd)')
-#     time__time = TimeFilter(field_name='time', lookup_expr='time', label='Time (hh:mm)')
+class DriverOrderFilter(filters.FilterSet):
+    time = filters.CharFilter(method='filter_by_time')
+
+    def filter_by_time(self, queryset, name, value):
+        try:
+            parsed_date = datetime.strptime(value, '%d.%m.%Y')
+            start_date = parsed_date.replace(hour=0, minute=0, second=0)
+            end_date = start_date + timedelta(days=1)
+            queryset = queryset.filter(time__gte=start_date, time__lt=end_date)
+        except ValueError:
+            pass
+
+        return queryset
+
+    class Meta:
+        model = DriverOrders
+        fields = ['fromm', 'to', 'time']

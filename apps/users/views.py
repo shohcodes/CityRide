@@ -7,12 +7,17 @@ from rest_framework.generics import GenericAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from apps.users.exceptions import IncorrectActivationCodeException
 from apps.users.models import User
 from apps.users.serializers import UsersSerializer, UserCreateSerializer, UsersDetailSerializer, VerifyUsersSerializer, \
-    ResetPasswordSerializer, ConfirmResetPasswordSerializer
+    ResetPasswordSerializer, ConfirmResetPasswordSerializer, CustomTokenObtainPairSerializer
 from apps.users.services import send_sms, check_activation_code
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
 
 
 class UsersViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.ListModelMixin, GenericViewSet,
@@ -41,7 +46,7 @@ class UsersViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.Li
             self.perform_destroy(instance)
             return Response('Account deleted successfully!')
         except Http404:
-            raise NotFound(detail="Invalid token", code="invalid_token")  # todo to ask
+            raise NotFound(detail="Invalid token", code="invalid_token")
 
 
 @api_view(['GET'])
@@ -52,6 +57,7 @@ def get_me(request):
         'id': user.id,
         'full_name': user.full_name,
         'phone_number': user.phone_number,
+        'role': user.role
     }
 
     return Response(user_data)

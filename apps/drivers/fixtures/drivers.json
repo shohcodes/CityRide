@@ -1,0 +1,41 @@
+[
+  {
+    "model": "drivers.drivers",
+    "pk": 1,
+    "fields": {
+      "created_at": "2023-12-04T08:50:51.339Z",
+      "updated_at": "2023-12-16T10:35:13.638Z",
+      "user": 6,
+      "car_model": 1,
+      "car_number": "01Z777ZZ",
+      "car_photo": "cars_photos/2_ICk8y95.PNG",
+      "is_accepted": true
+    }
+  },
+  {
+    "model": "drivers.drivers",
+    "pk": 2,
+    "fields": {
+      "created_at": "2023-12-04T08:51:57.927Z",
+      "updated_at": "2023-12-04T08:51:57.927Z",
+      "user": 7,
+      "car_model": 2,
+      "car_number": "01A717GC",
+      "car_photo": "cars_photos/2_AlhJmdk.PNG",
+      "is_accepted": false
+    }
+  },
+  {
+    "model": "drivers.drivers",
+    "pk": 3,
+    "fields": {
+      "created_at": "2023-12-04T08:53:01.896Z",
+      "updated_at": "2023-12-04T08:53:01.896Z",
+      "user": 8,
+      "car_model": 3,
+      "car_number": "01908ZC",
+      "car_photo": "cars_photos/2_HzBDIbz.PNG",
+      "is_accepted": false
+    }
+  }
+]
